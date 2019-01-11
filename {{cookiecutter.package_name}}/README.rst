@@ -6,15 +6,17 @@
     :target: https://pypi.python.org/pypi/{{ cookiecutter.package_name }}
     :alt: Latest PyPI version
 
-{%- endif %}
+{% endif -%}
 {% if cookiecutter.readme_travis_badge == 'y' -%}
 .. image:: {{ cookiecutter.readme_travis_url }}.png
    :target: {{ cookiecutter.readme_travis_url }}
    :alt: Latest Travis CI build status
 
-{%- endif %}
+{% endif -%}
+{% if cookiecutter.readme_travis_badge != '' -%}
 {{ cookiecutter.package_description }}
 
+{% endif -%}
 Usage
 -----
 
