@@ -1,18 +1,18 @@
 {{ cookiecutter.package_name }}
 {{ cookiecutter.package_name|count * "=" }}
 
-{% if cookiecutter.readme_pypi_badge -%}
+{% if cookiecutter.readme_pypi_badge == 'y' -%}
 .. image:: https://img.shields.io/pypi/v/{{ cookiecutter.package_name }}.svg
     :target: https://pypi.python.org/pypi/{{ cookiecutter.package_name }}
     :alt: Latest PyPI version
-{%- endif %}
 
-{% if cookiecutter.readme_travis_badge -%}
+{%- endif %}
+{% if cookiecutter.readme_travis_badge == 'y' -%}
 .. image:: {{ cookiecutter.readme_travis_url }}.png
    :target: {{ cookiecutter.readme_travis_url }}
    :alt: Latest Travis CI build status
-{%- endif %}
 
+{%- endif %}
 {{ cookiecutter.package_description }}
 
 Usage
