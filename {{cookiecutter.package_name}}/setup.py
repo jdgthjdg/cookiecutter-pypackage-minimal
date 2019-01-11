@@ -4,6 +4,8 @@ import re
 
 from setuptools import find_packages
 from setuptools import setup
+import requirements
+from pathlib import Path
 
 
 def read(filename):
@@ -11,6 +13,15 @@ def read(filename):
     text_type = type(u"")
     with io.open(filename, mode="r", encoding='utf-8') as fd:
         return re.sub(text_type(r':[a-z]+:`~?(.*?)`'), text_type(r'``\1``'), fd.read())
+
+
+def get_requires():
+    r_path = Path(__file__).parent / 'requirements.txt'
+    if r_path.exists():
+        reqs = list(requirements.parse(r_path.read_text()))
+        return [req.line for req in reqs]
+    else:
+        return []
 
 
 setup(
@@ -27,7 +38,7 @@ setup(
 
     packages=find_packages(exclude=('tests',)),
 
-    install_requires=[],
+    install_requires=get_requires(),
 
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
